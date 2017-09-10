@@ -4,3 +4,9 @@ c:\users\tstek\onedrive\documents\visual studio 2017\Projects\ConvertAHash\Conve
 c:\users\tstek\onedrive\documents\visual studio 2017\Projects\ConvertAHash\ConvertAHash\obj\Debug\ConvertAHash.csprojResolveAssemblyReference.cache
 c:\users\tstek\onedrive\documents\visual studio 2017\Projects\ConvertAHash\ConvertAHash\obj\Debug\ConvertAHash.exe
 c:\users\tstek\onedrive\documents\visual studio 2017\Projects\ConvertAHash\ConvertAHash\obj\Debug\ConvertAHash.pdb
+C:\Users\tstek\OneDrive\Documents\GitHub\HelpApplications\ConvertAHash\ConvertAHash\bin\Debug\ConvertAHash.exe.config
+C:\Users\tstek\OneDrive\Documents\GitHub\HelpApplications\ConvertAHash\ConvertAHash\bin\Debug\ConvertAHash.exe
+C:\Users\tstek\OneDrive\Documents\GitHub\HelpApplications\ConvertAHash\ConvertAHash\bin\Debug\ConvertAHash.pdb
+C:\Users\tstek\OneDrive\Documents\GitHub\HelpApplications\ConvertAHash\ConvertAHash\obj\Debug\ConvertAHash.csprojResolveAssemblyReference.cache
+C:\Users\tstek\OneDrive\Documents\GitHub\HelpApplications\ConvertAHash\ConvertAHash\obj\Debug\ConvertAHash.exe
+C:\Users\tstek\OneDrive\Documents\GitHub\HelpApplications\ConvertAHash\ConvertAHash\obj\Debug\ConvertAHash.pdb
