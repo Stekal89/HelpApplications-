@@ -1,0 +1,7 @@
+C:\Users\tstek\source\repos\GetCalendarWeeksAndDates\GetCalendarWeeksAndDates\obj\Debug\GetCalendarWeeksAndDates.csprojAssemblyReference.cache
+C:\Users\tstek\source\repos\GetCalendarWeeksAndDates\GetCalendarWeeksAndDates\obj\Debug\GetCalendarWeeksAndDates.csproj.CoreCompileInputs.cache
+C:\Users\tstek\source\repos\GetCalendarWeeksAndDates\GetCalendarWeeksAndDates\bin\Debug\GetCalendarWeeksAndDates.exe.config
+C:\Users\tstek\source\repos\GetCalendarWeeksAndDates\GetCalendarWeeksAndDates\bin\Debug\GetCalendarWeeksAndDates.exe
+C:\Users\tstek\source\repos\GetCalendarWeeksAndDates\GetCalendarWeeksAndDates\bin\Debug\GetCalendarWeeksAndDates.pdb
+C:\Users\tstek\source\repos\GetCalendarWeeksAndDates\GetCalendarWeeksAndDates\obj\Debug\GetCalendarWeeksAndDates.exe
+C:\Users\tstek\source\repos\GetCalendarWeeksAndDates\GetCalendarWeeksAndDates\obj\Debug\GetCalendarWeeksAndDates.pdb
