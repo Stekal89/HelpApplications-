@@ -1,0 +1,7 @@
+C:\Users\tstek\Desktop\SendMail\SendMail\bin\Debug\SendMail.exe.config
+C:\Users\tstek\Desktop\SendMail\SendMail\bin\Debug\SendMail.exe
+C:\Users\tstek\Desktop\SendMail\SendMail\bin\Debug\SendMail.pdb
+C:\Users\tstek\Desktop\SendMail\SendMail\obj\Debug\SendMail.csprojAssemblyReference.cache
+C:\Users\tstek\Desktop\SendMail\SendMail\obj\Debug\SendMail.csproj.CoreCompileInputs.cache
+C:\Users\tstek\Desktop\SendMail\SendMail\obj\Debug\SendMail.exe
+C:\Users\tstek\Desktop\SendMail\SendMail\obj\Debug\SendMail.pdb
