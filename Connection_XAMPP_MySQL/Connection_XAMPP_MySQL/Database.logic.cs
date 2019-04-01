@@ -6,13 +6,18 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+// Required to use the connectionstring using the app.config
+using System.Configuration;
 
 namespace Connection_XAMPP_MySQL
 {
     public class Database
     {
-        private static string conString = "server = localhost; user id = root; database = dbtest";
-
+        //private static string conString = "server = localhost; user id = root; database = dbtest";
+        // Tutorial: https://www.youtube.com/watch?v=MQ8t2bHtGlg
+        // Section from app.config: "Connection_XAMPP_MySQL.Properties.Settings.Setting"
+        private static string conString = ConfigurationManager.ConnectionStrings["Connection_XAMPP_MySQL.Properties.Settings.Setting"].ConnectionString;
+          
         public enum Modify
         {
            Firstname = 0,
