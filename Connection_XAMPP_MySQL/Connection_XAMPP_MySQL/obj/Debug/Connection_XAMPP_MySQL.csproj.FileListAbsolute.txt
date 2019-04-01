@@ -1,0 +1,13 @@
+C:\Users\tstek\source\repos\Connection_XAMPP_MySQL\Connection_XAMPP_MySQL\bin\Debug\Connection_XAMPP_MySQL.exe.config
+C:\Users\tstek\source\repos\Connection_XAMPP_MySQL\Connection_XAMPP_MySQL\bin\Debug\Connection_XAMPP_MySQL.exe
+C:\Users\tstek\source\repos\Connection_XAMPP_MySQL\Connection_XAMPP_MySQL\bin\Debug\Connection_XAMPP_MySQL.pdb
+C:\Users\tstek\source\repos\Connection_XAMPP_MySQL\Connection_XAMPP_MySQL\obj\Debug\Connection_XAMPP_MySQL.csprojAssemblyReference.cache
+C:\Users\tstek\source\repos\Connection_XAMPP_MySQL\Connection_XAMPP_MySQL\obj\Debug\Connection_XAMPP_MySQL.csproj.CoreCompileInputs.cache
+C:\Users\tstek\source\repos\Connection_XAMPP_MySQL\Connection_XAMPP_MySQL\obj\Debug\Connection_XAMPP_MySQL.exe
+C:\Users\tstek\source\repos\Connection_XAMPP_MySQL\Connection_XAMPP_MySQL\obj\Debug\Connection_XAMPP_MySQL.pdb
+C:\Users\tstek\source\repos\Connection_XAMPP_MySQL\Connection_XAMPP_MySQL\bin\Debug\MySql.Data.dll
+C:\Users\tstek\source\repos\Connection_XAMPP_MySQL\Connection_XAMPP_MySQL\bin\Debug\MySql.Data.EntityFramework.dll
+C:\Users\tstek\source\repos\Connection_XAMPP_MySQL\Connection_XAMPP_MySQL\bin\Debug\Google.Protobuf.dll
+C:\Users\tstek\source\repos\Connection_XAMPP_MySQL\Connection_XAMPP_MySQL\bin\Debug\MySql.Data.xml
+C:\Users\tstek\source\repos\Connection_XAMPP_MySQL\Connection_XAMPP_MySQL\bin\Debug\MySql.Data.EntityFramework.xml
+C:\Users\tstek\source\repos\Connection_XAMPP_MySQL\Connection_XAMPP_MySQL\obj\Debug\Connection_XAMPP_MySQL.csproj.CopyComplete
