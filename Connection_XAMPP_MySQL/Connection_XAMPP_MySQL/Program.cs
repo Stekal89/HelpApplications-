@@ -628,9 +628,8 @@ namespace Connection_XAMPP_MySQL
                         // Verify if entry with the id which user has entered exist in the database;
                         if (p != null)
                         {
-
                             do
-                            { 
+                            {
                                 Console.Clear();
                                 Green();
                                 Console.WriteLine("\n\n\t# # # M O D I F Y   E X I S T I N G   P E R S O N - M E N U # # #");
@@ -650,21 +649,22 @@ namespace Connection_XAMPP_MySQL
                                 {
                                     case ConsoleKey.NumPad1:
                                         ModifyFirstname(id);
+                                        p = Database.GetPersonById(id);
                                         break;
                                     case ConsoleKey.D1:
-                                        ModifyFirstname(id);
+                                        p = ModifyFirstname(id);
                                         break;
                                     case ConsoleKey.NumPad2:
-                                        ModifyFirstname(id);
+                                        p = ModifyLastName(id);
                                         break;
                                     case ConsoleKey.D2:
-                                        ModifyLastName(id);
+                                        p = ModifyLastName(id);
                                         break;
                                     case ConsoleKey.NumPad3:
-                                        ModifyLastName(id);
+                                        p = ModifyPerson(id);
                                         break;
                                     case ConsoleKey.D3:
-                                        ModifyPerson(id);
+                                        p = ModifyPerson(id);
                                         break;
                                     case ConsoleKey.Escape:
                                         Console.Clear();
@@ -680,7 +680,7 @@ namespace Connection_XAMPP_MySQL
                                         PressKeyToContinue();
                                         Console.Clear();
                                         break;
-                                }
+                                }   
                             } while (keyInfo.Key != ConsoleKey.Escape && keyInfo.Key != ConsoleKey.Backspace);
                         }
                         else
@@ -706,7 +706,7 @@ namespace Connection_XAMPP_MySQL
         /// <summary>
         /// Modifies Firstname and Lastname of Person and displays it afterwards on the console window.
         /// </summary>
-        private static void ModifyPerson(int id)
+        private static Person ModifyPerson(int id)
         {
             // Ask User for new Firstname and new Lastname of the Person
             Console.Clear();
@@ -730,13 +730,14 @@ namespace Connection_XAMPP_MySQL
             Gray();
             // Display modified Person
             DisplayPersonById(id);
+            return Database.GetPersonById(id);
         }
 
         /// <summary>
         /// Modify the firstname of a Person.
         /// </summary>
         /// <param name="id">DB-ID of the Person</param>
-        private static void ModifyFirstname(int id)
+        private static Person ModifyFirstname(int id)
         {
             // Ask User for new Firstname and new Lastname of the Person
             Console.Clear();
@@ -744,7 +745,6 @@ namespace Connection_XAMPP_MySQL
             Console.Write("\n\nPlease enter the new \"Firstname\" of the Person: ");
             Gray();
             string firstName = Console.ReadLine();
-            Green();
             
             // Modify existing Person
             Green();
@@ -756,13 +756,14 @@ namespace Connection_XAMPP_MySQL
             Gray();
             // Display modified Person
             DisplayPersonById(id);
+            return Database.GetPersonById(id);
         }
 
         /// <summary>
         /// Modify the Lastname of a Person.
         /// </summary>
         /// <param name="id">DB-ID of the Person</param>
-        private static void ModifyLastName(int id)
+        private static Person ModifyLastName(int id)
         {
             // Ask User for new Firstname and new Lastname of the Person
             Console.Clear();
@@ -781,6 +782,7 @@ namespace Connection_XAMPP_MySQL
             Gray();
             // Display modified Person
             DisplayPersonById(id);
+            return Database.GetPersonById(id);
         }
 
         #endregion

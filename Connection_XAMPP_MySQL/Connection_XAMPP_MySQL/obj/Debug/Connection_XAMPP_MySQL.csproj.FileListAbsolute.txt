@@ -11,3 +11,16 @@ C:\Users\tstek\source\repos\Connection_XAMPP_MySQL\Connection_XAMPP_MySQL\bin\De
 C:\Users\tstek\source\repos\Connection_XAMPP_MySQL\Connection_XAMPP_MySQL\bin\Debug\MySql.Data.xml
 C:\Users\tstek\source\repos\Connection_XAMPP_MySQL\Connection_XAMPP_MySQL\bin\Debug\MySql.Data.EntityFramework.xml
 C:\Users\tstek\source\repos\Connection_XAMPP_MySQL\Connection_XAMPP_MySQL\obj\Debug\Connection_XAMPP_MySQL.csproj.CopyComplete
+C:\workspace\HelpApplications\Connection_XAMPP_MySQL\Connection_XAMPP_MySQL\bin\Debug\Connection_XAMPP_MySQL.exe.config
+C:\workspace\HelpApplications\Connection_XAMPP_MySQL\Connection_XAMPP_MySQL\bin\Debug\Connection_XAMPP_MySQL.exe
+C:\workspace\HelpApplications\Connection_XAMPP_MySQL\Connection_XAMPP_MySQL\bin\Debug\Connection_XAMPP_MySQL.pdb
+C:\workspace\HelpApplications\Connection_XAMPP_MySQL\Connection_XAMPP_MySQL\bin\Debug\MySql.Data.dll
+C:\workspace\HelpApplications\Connection_XAMPP_MySQL\Connection_XAMPP_MySQL\bin\Debug\MySql.Data.EntityFramework.dll
+C:\workspace\HelpApplications\Connection_XAMPP_MySQL\Connection_XAMPP_MySQL\bin\Debug\Google.Protobuf.dll
+C:\workspace\HelpApplications\Connection_XAMPP_MySQL\Connection_XAMPP_MySQL\bin\Debug\MySql.Data.xml
+C:\workspace\HelpApplications\Connection_XAMPP_MySQL\Connection_XAMPP_MySQL\bin\Debug\MySql.Data.EntityFramework.xml
+C:\workspace\HelpApplications\Connection_XAMPP_MySQL\Connection_XAMPP_MySQL\obj\Debug\Connection_XAMPP_MySQL.csprojAssemblyReference.cache
+C:\workspace\HelpApplications\Connection_XAMPP_MySQL\Connection_XAMPP_MySQL\obj\Debug\Connection_XAMPP_MySQL.csproj.CoreCompileInputs.cache
+C:\workspace\HelpApplications\Connection_XAMPP_MySQL\Connection_XAMPP_MySQL\obj\Debug\Connection_XAMPP_MySQL.csproj.CopyComplete
+C:\workspace\HelpApplications\Connection_XAMPP_MySQL\Connection_XAMPP_MySQL\obj\Debug\Connection_XAMPP_MySQL.exe
+C:\workspace\HelpApplications\Connection_XAMPP_MySQL\Connection_XAMPP_MySQL\obj\Debug\Connection_XAMPP_MySQL.pdb

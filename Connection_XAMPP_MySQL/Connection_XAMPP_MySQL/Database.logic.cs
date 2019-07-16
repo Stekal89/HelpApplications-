@@ -38,32 +38,34 @@ namespace Connection_XAMPP_MySQL
         private static Person QueryForPerson(string query)
         {
             Person person = new Person();
-
+            
             using (MySqlConnection connection = new MySqlConnection(conString))
             {
-                MySqlCommand command = new MySqlCommand(query, connection);
-                command.CommandTimeout = 60;
-
                 try
                 {
-                    connection.Open();
-
-                    MySqlDataReader dataReader = command.ExecuteReader();
-
-                    if (dataReader.HasRows)
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
-                        int identity;
-                        while (dataReader.Read())
+                        command.CommandTimeout = 60;
+                        connection.Open();
+
+                        using (MySqlDataReader dataReader = command.ExecuteReader())
                         {
-                            int.TryParse(dataReader.GetString("Id"), out identity);
-                            person = new Person()
+                            if (dataReader.HasRows)
                             {
-                                Id = identity,
-                                FirstName = dataReader.GetString("Firstname"),
-                                LastName = dataReader.GetString("Lastname")
-                            };
+                                int identity;
+                                while (dataReader.Read())
+                                {
+                                    int.TryParse(dataReader.GetString("Id"), out identity);
+                                    person = new Person()
+                                    {
+                                        Id = identity,
+                                        FirstName = dataReader.GetString("Firstname"),
+                                        LastName = dataReader.GetString("Lastname")
+                                    };
+                                }
+                                return person;
+                            }
                         }
-                        return person;
                     }
                 }
                 catch (Exception ex)
@@ -87,30 +89,32 @@ namespace Connection_XAMPP_MySQL
             
             using (MySqlConnection connection = new MySqlConnection(conString))
             {
-                MySqlCommand command = new MySqlCommand(query, connection);
-                command.CommandTimeout = 60;
-
                 try
                 {
-                    connection.Open();
-
-                    MySqlDataReader dataReader = command.ExecuteReader();
-
-                    if (dataReader.HasRows)
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
-                        int id;
+                        command.CommandTimeout = 60;
+                        connection.Open();
 
-                        while (dataReader.Read())
+                        using (MySqlDataReader dataReader = command.ExecuteReader())
                         {
-                            int.TryParse(dataReader.GetString("Id"), out id);
-                            persons.Add(new Person()
+                            if (dataReader.HasRows)
                             {
-                                Id = id,
-                                FirstName = dataReader.GetString("Firstname"),
-                                LastName = dataReader.GetString("Lastname")
-                            });
+                                int id;
+
+                                while (dataReader.Read())
+                                {
+                                    int.TryParse(dataReader.GetString("Id"), out id);
+                                    persons.Add(new Person()
+                                    {
+                                        Id = id,
+                                        FirstName = dataReader.GetString("Firstname"),
+                                        LastName = dataReader.GetString("Lastname")
+                                    });
+                                }
+                                return persons;
+                            }
                         }
-                        return persons;
                     }
                 }
                 catch (Exception ex)
@@ -134,24 +138,27 @@ namespace Connection_XAMPP_MySQL
 
             using (MySqlConnection connection = new MySqlConnection(conString))
             {
-                MySqlCommand command = new MySqlCommand(query, connection);
-                command.CommandTimeout = 60;
-
                 try
                 {
-                    connection.Open();
-
-                    MySqlDataReader dataReader = command.ExecuteReader();
-
-                    if (dataReader.HasRows)
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
-                        int tableResult;
-                        while (dataReader.Read())
-                        {
-                            int.TryParse(dataReader.GetString("Count"), out tableResult);
-                            result = tableResult;
+                        command.CommandTimeout = 60;
+                        connection.Open();
+
+                        using (MySqlDataReader dataReader = command.ExecuteReader())
+                        { 
+
+                            if (dataReader.HasRows)
+                            {
+                                int tableResult;
+                                while (dataReader.Read())
+                                {
+                                    int.TryParse(dataReader.GetString("Count"), out tableResult);
+                                    result = tableResult;
+                                }
+                                return result;
+                            }
                         }
-                        return result;
                     }
                 }
                 catch (Exception ex)
@@ -278,14 +285,19 @@ namespace Connection_XAMPP_MySQL
 
             using (MySqlConnection connection = new MySqlConnection(conString))
             {
-                MySqlCommand command = new MySqlCommand(insert, connection);
-                command.CommandTimeout = 60;
-
                 try
                 {
-                    connection.Open();
-                    // Execute the insert -> Add the new User
-                    MySqlDataReader dataReader = command.ExecuteReader();
+                    using (MySqlCommand command = new MySqlCommand(insert, connection))
+                    { 
+                        command.CommandTimeout = 60;
+                        connection.Open();
+
+                        // Execute the insert -> Add the new User
+                        using (MySqlDataReader dataReader = command.ExecuteReader())
+                        {
+
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -342,29 +354,38 @@ namespace Connection_XAMPP_MySQL
         {
             string update = null;
 
-            if (newFirstName != null && newLastName != null && modify == Modify.All)
+            if (modify == Modify.All)
             {
-                update = $@"
+                if (newFirstName != null && newLastName != null)
+                {
+                    update = $@"
                             UPDATE tblPerson 
                             SET Firstname = '{newFirstName}', Lastname = '{newLastName}'
                             WHERE Id = {id};
                             ";
+                }
             }
-            else if (newFirstName != null && newLastName == null && modify == Modify.Firstname)
+            else if (modify == Modify.Firstname)
             {
-                update = $@"
-                            UPDATE tblPerson 
-                            SET Firstname = '{newFirstName}'
-                            WHERE Id = {id};
-                            ";
+                if (newFirstName != null)
+                {
+                    update = $@"
+                                UPDATE tblPerson 
+                                SET Firstname = '{newFirstName}'
+                                WHERE Id = {id};
+                                ";
+                }
             }
-            else if (newLastName != null && newFirstName == null && modify == Modify.Lastname)
+            else if (modify == Modify.Lastname)
             {
-                update = $@"
-                            UPDATE tblPerson 
-                            SET Lastname = '{newLastName}'
-                            WHERE Id = {id};
-                            ";
+                if (newLastName != null)
+                {
+                    update = $@"
+                                UPDATE tblPerson 
+                                SET Lastname = '{newLastName}'
+                                WHERE Id = {id};
+                                ";
+                }
             }
             else
             {
@@ -377,20 +398,25 @@ namespace Connection_XAMPP_MySQL
                 Console.WriteLine($"Modify-Type: \"{modify}\"");
                 return false;
             }
-
-            if (update != null)
+            
+            if (update != null || update != "")
             {
                 // Modify Person
                 using (MySqlConnection connection = new MySqlConnection(conString))
                 {
-                    MySqlCommand command = new MySqlCommand(update, connection);
-                    command.CommandTimeout = 60;
-
                     try
                     {
-                        connection.Open();
-                        // Execute the insert -> Add the new User
-                        MySqlDataReader dataReader = command.ExecuteReader();
+                        using (MySqlCommand command = new MySqlCommand(update, connection))
+                        {
+                            command.CommandTimeout = 60;
+
+                            connection.Open();
+                            // Execute the insert -> Add the new User
+                            using (MySqlDataReader dataReader = command.ExecuteReader())
+                            {
+
+                            }
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -402,22 +428,30 @@ namespace Connection_XAMPP_MySQL
                 // Select and return new created Person
                 Person person = GetPersonById(id);
 
-                if (modify == Modify.All && person.FirstName == newFirstName && person.LastName == newLastName)
-                    return true;
-                if (modify == Modify.Firstname && person.FirstName == newFirstName)
-                    return true;
-                if (modify == Modify.Lastname && person.LastName == newLastName)
-                    return true;
-               
-                return false;
+                if (modify == Modify.All)
+                {
+                    if (person.FirstName == newFirstName && person.LastName == newLastName)
+                        return true;
+                }
+                else if (modify == Modify.Firstname)
+                {
+                    if (person.FirstName == newFirstName)
+                        return true;
+                }
+                else if (modify == Modify.Lastname)
+                {
+                    if (person.LastName == newLastName)
+                        return true;
+                }
 
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("New-Firstname and New-Lastname are NULL! One of them musst be setted!");
+                Console.WriteLine($"Firstname: \"{newFirstName}\"");
+                Console.WriteLine($"Lastname: \"{newLastName}\"");
+                Console.WriteLine($"Modify-Type: \"{modify}\"");
+                Program.PressKeyToContinue();
+                return false;
             }
-            
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("New-Firstname and New-Lastname are NULL! One of them musst be setted!");
-            Console.WriteLine($"Firstname: \"\"");
-            Console.WriteLine($"Lastname: ");
-            Program.PressKeyToContinue();
             return false;
         }
 
