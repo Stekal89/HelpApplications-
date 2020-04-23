@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -22,34 +23,74 @@ namespace ProgressBar
     /// </summary>
     public partial class MainWindow : Window
     {
-        bool mFinished = false;
-
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void ClickbtnTest(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Function to simulate a long process, which can block the GUI
+        /// </summary>
+        private bool SimulateLongWork()
         {
-            pbMyBar.Visibility = Visibility.Visible;
-            //pbMyBar.IsIndeterminate = true;
-            BackgroundWorker worker = new BackgroundWorker();
-            worker.RunWorkerCompleted += Worker_RunWorkerCompleted;
-            worker.WorkerReportsProgress = true;
-            worker.DoWork += Worker_DoWork;
-            worker.ProgressChanged += Worker_ProgressChanged;
-            worker.RunWorkerAsync();
-
+            for (int i = 0; i < 10; i++)
+            {
+                Thread.Sleep(new TimeSpan(0,0,15));
+                Trace.WriteLine("Process some data...");
+            }
+            return true;
         }
 
+        bool workDone = false;
+
+        private void ClickbtnTest(object sender, RoutedEventArgs e)
+        {
+            workDone = false;
+            pbMyBar.Visibility = Visibility.Visible;
+            //pbMyBar.IsIndeterminate = true;
+            using (BackgroundWorker worker = new BackgroundWorker())
+            {
+                worker.RunWorkerCompleted += Worker_RunWorkerCompleted;
+                worker.WorkerReportsProgress = true;
+                worker.DoWork += Worker_DoWork;
+                worker.ProgressChanged += Worker_ProgressChanged;
+                worker.RunWorkerAsync();
+            }
+
+            // It will not work, if we call the Function directly:
+            //SimulateLongWork();
+            //workDone = true;
+
+            // So we have to execute it in a different Thread, than the GUI Thread
+            System.Threading.Tasks.Task.Factory.StartNew(() =>
+            {
+                return SimulateLongWork();
+            }).ContinueWith(t =>
+            {
+                if (t.Result)
+                {
+                    workDone = true;
+                }
+            }, System.Threading.Tasks.TaskScheduler.FromCurrentSynchronizationContext());
+        }
+
+        /// <summary>
+        /// What to do when work is completed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             MessageBox.Show("All Done");
-            //pbMyBar.IsIndeterminate = false;
             pbMyBar.Value = 0;
             pbMyBar.Visibility = Visibility.Hidden;
         }
 
+        /// <summary>
+        /// What worker have to do.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Worker_DoWork(object sender, DoWorkEventArgs e)
         {
             var worker = sender as BackgroundWorker;
@@ -60,7 +101,7 @@ namespace ProgressBar
             //    Thread.Sleep(new TimeSpan(0,0,1));
             //    worker.ReportProgress((i + 1) * 10);
             //}
-            while (!mFinished)
+            while (!workDone)
             {
                 worker.ReportProgress(0);
                 for (int i = 0; i <= 10; i++)
@@ -72,14 +113,14 @@ namespace ProgressBar
             }
         }
 
+        /// <summary>
+        /// What happened, when Progress changed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             pbMyBar.Value = e.ProgressPercentage;
-        }
-
-        private void ClickbtnFinished(object sender, RoutedEventArgs e)
-        {
-            mFinished = true;
         }
     }
 }

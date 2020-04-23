@@ -43,7 +43,9 @@
 
         <ProgressBar x:Name="pbMyBar" Grid.Row="6" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="12" MaxHeight="30" MaxWidth="550" Visibility="Hidden" />
         <Button x:Name="btnTest" Content="Start Progress" Grid.Row="9" Grid.Column="6" Grid.ColumnSpan="2" MaxHeight="30" MaxWidth="120" Click="ClickbtnTest"/>
-        <Button x:Name="btnFinished" Content="Stop Progress" Grid.Row="10" Grid.Column="6" Grid.ColumnSpan="2" MaxHeight="30" MaxWidth="120" Click="ClickbtnFinished"/>
+        <!-- 
+        <Button x:Name="btnFinished" Content="Stop Progress" Grid.Row="10" Grid.Column="6" Grid.ColumnSpan="2" MaxHeight="30" MaxWidth="120" Click="ClickbtnFinished"/> 
+        -->
 
     </Grid>
 </Window>
