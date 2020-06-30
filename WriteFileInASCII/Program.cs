@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace WriteFileInASCII
@@ -23,21 +24,29 @@ namespace WriteFileInASCII
                 System.IO.Directory.CreateDirectory(strDirectory);
             }
 
-
-
-            CreateFile(Path.Combine(strDirectory, "UTF7Test.txt"),    Encoding.UTF7);
-            CreateFile(Path.Combine(strDirectory, "UTF7Test.csv"),    Encoding.UTF7);
-            CreateFile(Path.Combine(strDirectory, "UTF8Test.txt"),    Encoding.UTF8);
-            CreateFile(Path.Combine(strDirectory, "UTF8Test.csv"),    Encoding.UTF8);
-            CreateFile(Path.Combine(strDirectory, "UTF32Test.txt"),   Encoding.UTF32);
-            CreateFile(Path.Combine(strDirectory, "UTF32Test.csv"),   Encoding.UTF32);
+            CreateFile(Path.Combine(strDirectory, "UTF7Test.txt"), Encoding.UTF7);
+            CreateFile(Path.Combine(strDirectory, "UTF7Test.csv"), Encoding.UTF7);
+            CreateFile(Path.Combine(strDirectory, "UTF8Test.txt"), Encoding.UTF8);
+            CreateFile(Path.Combine(strDirectory, "UTF8Test.csv"), Encoding.UTF8);
+            CreateFile(Path.Combine(strDirectory, "UTF32Test.txt"), Encoding.UTF32);
+            CreateFile(Path.Combine(strDirectory, "UTF32Test.csv"), Encoding.UTF32);
             CreateFile(Path.Combine(strDirectory, "UnicodeTest.txt"), Encoding.Unicode);
             CreateFile(Path.Combine(strDirectory, "UnicodeTest.csv"), Encoding.Unicode);
-            CreateFile(Path.Combine(strDirectory, "ASCIITest.txt"),   Encoding.ASCII);
-            CreateFile(Path.Combine(strDirectory, "ASCIITest.csv"),   Encoding.ASCII);
+            CreateFile(Path.Combine(strDirectory, "DefualtASCIITest.txt"), Encoding.ASCII);
+            CreateFile(Path.Combine(strDirectory, "DefaultASCIITest.csv"), Encoding.ASCII);
+            CreateFile(Path.Combine(strDirectory, "GermanASCIITest.txt"), Encoding.GetEncoding(437));
+            CreateFile(Path.Combine(strDirectory, "GermanASCIITest.csv"), Encoding.GetEncoding(437));
 
+            //Thread.Sleep(new TimeSpan(0, 0, 5));
             ShowEncoding(strDirectory, "*.txt");
             ShowEncoding(strDirectory, "*.csv");
+
+            //string sample = "ABC ÖäÜ⌐";
+            //Encoding cpEN = Encoding.GetEncoding(437);
+            //Byte[] byteCodePageEnglish = cpEN.GetBytes(sample);
+            //Console.WriteLine("Dekodierte Zeichenkette: {0}", cpEN.GetString(byteCodePageEnglish));
+            //Encoding cptk = Encoding.GetEncoding(437);
+            //Console.WriteLine("Dekodierte Zeichenkette: {0}", cptk.GetString(byteCodePageEnglish));
 
             Console.WriteLine("\n\n\nContinue with any key...");
             Console.ReadKey();
@@ -67,7 +76,7 @@ namespace WriteFileInASCII
                         Console.WriteLine("\nWrite File-Content...");
                         for (int i = 0; i < 10; i++)
                         {
-                            sw.WriteLine($"ASCII line: \"{i}\"");
+                            sw.WriteLine($"ASCII line: \"{i}\" -> AEIOU Ä Ö Ü");
                         }
                     }
                 }
@@ -96,7 +105,7 @@ namespace WriteFileInASCII
                 Console.WriteLine("######################################################################################################");
                 Console.WriteLine($"File: \"{file}\"");
 
-                if (encoding == Encoding.ASCII)
+                if (encoding == Encoding.ASCII || encoding == Encoding.GetEncoding(437))
                 {
                     Console.WriteLine($"YES: GetEncoding: \"{encoding.EncodingName}/{encoding}\"");
                 }
@@ -106,8 +115,8 @@ namespace WriteFileInASCII
                 }
 
                 Encoding encoding2 = GetEncoding2(file);
-
-                if (encoding2 == Encoding.ASCII)
+                Encoding test = Encoding.GetEncoding(437);
+                if (encoding2 == Encoding.ASCII || encoding2 == Encoding.GetEncoding(437))
                 {
                     Console.WriteLine($"YES: GetEncoding2: \"{encoding2.EncodingName}/{encoding2}\"");
                 }
