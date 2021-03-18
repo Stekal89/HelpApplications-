@@ -20,20 +20,34 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <ComboBox Grid.Row="0" Grid.Column="0" Height="{Binding ElementName=grdMain, Path=ActualHeight, Mode=OneWay}" Width="{Binding ElementName=grdMain, Path=ActualWidth, Mode=OneWay}"
-                  TextBoxBase.TextChanged="cbxMain_TextChanged" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                  Name="cbxMain" IsEditable="True" IsTextSearchEnabled="False" StaysOpenOnEdit="True" Margin="0" Padding="0"
+        <ComboBox x:Name="cbxMain" Grid.Row="0" Grid.Column="0" 
+                  Height="{Binding ElementName=grdMain, Path=ActualHeight, Mode=OneWay}" Width="{Binding ElementName=grdMain, Path=ActualWidth, Mode=OneWay}"
+                  TextBoxBase.TextChanged="cbxMain_TextChanged"
+                  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                  PreviewMouseLeftButtonDown="LeftMouseButtoncbxMain"
+                  IsEditable="True" IsReadOnly="True" IsTextSearchEnabled="False" 
+                  StaysOpenOnEdit="True" 
+                  Margin="0" Padding="0"
                   SelectionChanged="cbxMain_SelectionChanged" 
                   Text="{Binding SelectedFilter.DisplayName, Mode=TwoWay}" DropDownClosed="cbxMain_DropDownClosed" >
             <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <ToggleButton Height="{Binding ElementName=grdMain, Path=ActualHeight, Mode=OneWay}" Width="{Binding ElementName=grdMain, Path=ActualWidth, Mode=OneWay}"
-                                  Margin="-5,-2,-6,-2" Padding="0,0,0,0" Background="Transparent" BorderBrush="Transparent" >
-                        <CheckBox Name="chkObject" Checked="AllCheckbocx_CheckedAndUnchecked" Unchecked="AllCheckbocx_CheckedAndUnchecked" 
-                              Height="{Binding ElementName=grdMain, Path=ActualHeight, Mode=OneWay}" Width="{Binding ElementName=grdMain, Path=ActualWidth, Mode=OneWay}"
-                              HorizontalContentAlignment="Left" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center"
-                              Content="{Binding ObjectName}" IsChecked="{Binding ObjectStatus}" CommandParameter="{Binding ObjectId}" Margin="0,-1,0,-1" Padding="0,-2,0,-2" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.IsSharedSizeScope="False" >
-
+                    <ToggleButton Height="{Binding ElementName=grdMain, Path=ActualHeight, Mode=OneWay}" 
+                                  Width="{Binding ElementName=grdMain, Path=ActualWidth, Mode=OneWay}"
+                                  Margin="-5,-2,-6,-2" Padding="5,0,0,0" 
+                                  Background="Transparent" 
+                                  BorderBrush="Transparent" >
+                        <CheckBox Name="chkObject" 
+                                  Checked="AllCheckbox_CheckedAndUnchecked" Unchecked="AllCheckbox_CheckedAndUnchecked"
+                                  Height="{Binding ElementName=grdMain, Path=ActualHeight, Mode=OneWay}" 
+                                  Width="{Binding ElementName=grdMain, Path=ActualWidth, Mode=OneWay}"
+                                  HorizontalContentAlignment="Left" HorizontalAlignment="Stretch" 
+                                  VerticalAlignment="Stretch" VerticalContentAlignment="Center"
+                                  IsChecked="{Binding ObjectStatus}" CommandParameter="{Binding ObjectId}" 
+                                  Margin="0,-1,0,-1" Padding="0,-2,0,-2" 
+                                  ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                                  Grid.IsSharedSizeScope="False" >
+                            <TextBlock Margin="5px,0px,0px,0px" Text="{Binding ObjectName}" />
                         </CheckBox>
                     </ToggleButton>
                 </DataTemplate>

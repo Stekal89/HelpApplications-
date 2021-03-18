@@ -86,7 +86,7 @@ namespace WPF_MultiselectionComboBox.UserControls
         }
 
 
-        private void AllCheckbocx_CheckedAndUnchecked(object sender, RoutedEventArgs e)
+        private void AllCheckbox_CheckedAndUnchecked(object sender, RoutedEventArgs e)
         {
             BindListBOX();
         }
@@ -117,6 +117,34 @@ namespace WPF_MultiselectionComboBox.UserControls
             //System.Diagnostics.Debugger.Break();
             //BindListBOX();
             //cbxMain.IsDropDownOpen = true;
+        }
+
+        /// <summary>
+        /// Open Dropdown if Textbox was clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LeftMouseButtoncbxMain(object sender, MouseButtonEventArgs e)
+        {
+            //System.Diagnostics.Debug.Indent();
+            //System.Diagnostics.Debug.WriteLine($"OriginalSource: \"{e.OriginalSource.ToString()}\"");
+            //System.Diagnostics.Debug.Unindent();
+            //System.Diagnostics.Debugger.Break();
+            if (e.OriginalSource.ToString() != "System.Windows.Controls.TextBoxView")
+            {
+                return;
+            }
+            if (sender is ComboBox cbx)
+            {
+                if (!cbx.IsDropDownOpen)
+                {
+                    cbx.IsDropDownOpen = true;
+                }
+                else
+                {
+                    cbx.IsDropDownOpen = false;
+                }
+            }
         }
     }
 }
