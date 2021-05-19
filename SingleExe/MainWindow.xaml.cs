@@ -21,6 +21,23 @@ namespace SingleExe
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary>
+        /// The whole Tutorial was found here: https://www.youtube.com/watch?v=VQ7BziAyges
+        /// 
+        /// Add to the "%ApplicationName%.csproj" file (inside of the <Project> Tag):
+        ///
+        /// <Target Name="AfterResolveReferences">
+        ///     <ItemGroup>
+        ///         <EmbeddedResource Include = "@(ReferenceCopyLocalPaths)" Condition="'%(ReferenceCopyLocalPaths.Extension)' == '.dll'">
+        ///         <LogicalName>%ReferenceCopyLocalPaths.DestinationSubDirectory)%(ReferenceCopyLocalPaths.Filename)%(ReferenceCopyLocalPaths.Extension)</LogicalName>
+        ///     </EmbeddedResource>
+        ///     </ItemGroup>
+        /// </Target>
+        /// 
+        /// And take a look into the "App.xaml.cs"
+        /// 
+        /// </summary>
+
         public MainWindow()
         {
             InitializeComponent();
